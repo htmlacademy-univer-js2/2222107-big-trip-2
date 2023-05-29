@@ -3,9 +3,9 @@ import {humanizePointDueDate, duration, getDate, getTime } from '../utils.js';
 
 const renderOffers = (allOffers, checkedOffers) => {
   let result = '';
-  allOffers.forEach((offer) => {
+  allOffers((offer) => {
     if (checkedOffers.includes(offer.id)) {
-      result = `${result}<li class="event__offer"><span class="event__offer-title">${offer.title}</span>&plus;&euro;&nbsp;<span class="event__offer-price">${offer.price}</span></li>`;
+      result = `${result}<li class="event__offer"><span class="event__offer-title"> offer.</span>&plus;&euro;&nbsp;<span class="event__offer-price">offer price}</span></li>`;
     }
   });
   return result;
@@ -55,30 +55,25 @@ const createPreviewPointTemplate = (point, destinations, offers) => {
 };
 
 export default class PreviewPointView {
-  #element = null;
-  #point = null;
-  #destination = null;
-  #offers = null;
-
   constructor(point, destination, offers) {
-    this.#point = point;
-    this.#destination = destination;
-    this.#offers = offers;
+    this.point = point;
+    this.destination = destination;
+    this.offers = offers;
   }
 
-  get template () {
-    return createPreviewPointTemplate(this.#point, this.#destination, this.#offers);
+  getTemplate () {
+    return createPreviewPointTemplate(this.point, this.destination, this.offers);
   }
 
-  get element() {
-    if (!this.#element){
-      this.#element = createElement(this.template);
+  getElement() {
+    if (!this.element){
+      this.element = createElement(this.getTemplate());
     }
 
-    return this.#element;
+    return this.element;
   }
 
   removeElement() {
-    this.#element = null;
+    this.element = null;
   }
 }

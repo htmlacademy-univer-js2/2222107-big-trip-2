@@ -1,27 +1,24 @@
 import { createElement } from '../render.js';
-const createSiteMenuTemplate = () => (
-  `<nav class="trip-controls__trip-tabs  trip-tabs">
-  <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
-  <a class="trip-tabs__btn" href="#">Stats</a>
-</nav>`
-);
+
+const createMenuTemplate = () => `<nav class="trip-controls__trip-tabs  trip-tabs">
+<a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
+<a class="trip-tabs__btn" href="#">Stats</a>
+</nav>`;
 
 export default class MenuView {
-  #element = null;
-
-  get template () {
-    return createSiteMenuTemplate();
+  getTemplate() {
+    return createMenuTemplate();
   }
 
-  get element() {
-    if (!this.#element){
-      this.#element = createElement(this.template);
+  getElement() {
+    if (!this.element) {
+      this.element = createElement(this.getTemplate());
     }
 
-    return this.#element;
+    return this.element;
   }
 
   removeElement() {
-    this.#element = null;
+    this.element = null;
   }
 }

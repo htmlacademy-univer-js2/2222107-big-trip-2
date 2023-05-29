@@ -17,21 +17,19 @@ const createFiltersTemplate = () => `<form class="trip-filters" action="#" metho
 </form>`;
 
 export default class FiltersView {
-  #element =null;
-
-  get template () {
+  getTemplate() {
     return createFiltersTemplate();
   }
 
-  get element() {
-    if (!this.#element){
-      this.#element = createElement(this.template);
+  getElement() {
+    if (!this.element) {
+      this.element = createElement(this.getTemplate());
     }
 
-    return this.#element;
+    return this.element;
   }
 
   removeElement() {
-    this.#element = null;
+    this.element = null;
   }
 }
