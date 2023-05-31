@@ -26,7 +26,7 @@ const renderOffers = (allOffers, checkedOffers) => {
   return result;
 };
 
-const createEditingFormTemplate = (point, destinations, offers) => {
+const createEditingPointTemplate = (point, destinations, offers) => {
   const {basePrice, type, destinationId, dateFrom, dateTo, offerIds} = point;
   const allPointTypeOffers = offers.find((offer) => offer.type === type);
   return (
@@ -132,26 +132,31 @@ const createEditingFormTemplate = (point, destinations, offers) => {
   );
 };
 
-export default class EditingFormView {
+export default class EditingPointView {
+  #element = null;
+  #point = null;
+  #destination = null;
+  #offers = null;
+
   constructor(point, destination, offers) {
-    this.point = point;
-    this.destination = destination;
-    this.offers = offers;
+    this.#point = point;
+    this.#destination = destination;
+    this.#offers = offers;
   }
 
-  getTemplate () {
-    return createEditingFormTemplate(this.point, this.destination, this.offers);
+  get template () {
+    return createEditingPointTemplate(this.#point, this.#destination, this.#offers);
   }
 
-  getElement() {
-    if (!this.element){
-      this.element = createElement(this.getTemplate());
+  get element() {
+    if (!this.#element){
+      this.#element = createElement(this.template);
     }
 
-    return this.element;
+    return this.#element;
   }
 
   removeElement() {
-    this.element = null;
+    this.#element = null;
   }
 }
