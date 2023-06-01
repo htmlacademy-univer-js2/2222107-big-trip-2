@@ -1,4 +1,5 @@
 import { createElement } from '../render.js';
+
 const createSiteMenuTemplate = () => (
   `<nav class="trip-controls__trip-tabs  trip-tabs">
   <a class="trip-tabs__btn  trip-tabs__btn--active" href="#">Table</a>
@@ -6,7 +7,7 @@ const createSiteMenuTemplate = () => (
 </nav>`
 );
 
-export default class MenuView {
+export default class SiteMenuView {
   #element = null;
 
   get template () {
