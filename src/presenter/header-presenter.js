@@ -1,8 +1,8 @@
 import { render, RenderPosition, remove } from '../framework/render.js';
 import UiBlocker from '../framework/ui-blocker/ui-blocker.js';
 import PointsListView from '../view/points-list-view.js';
-import SortingView from '../view/sorting-view.js';
-import NoPointView from '../view/no-point-view.js';
+import SortingFormView from '../view/sorting-form-view.js';
+import NoEventView from '../view/no-event-view.js';
 import LoadingView from '../view/loading-view.js';
 import NoAdditionalInfoView from '../view/no-additional-info-view.js';
 import PointPresenter from './point-presenter.js';
@@ -80,7 +80,7 @@ export default class BoardPresenter {
   };
 
   #renderSort = () => {
-    this.#sortComponent = new SortingView(this.#currentSortType);
+    this.#sortComponent = new SortingFormView(this.#currentSortType);
     this.#sortComponent.setSortTypeChangeHandler(this.#handleSortTypeChange);
 
     render(this.#sortComponent, this.#tripContainer, RenderPosition.AFTERBEGIN);
@@ -117,7 +117,7 @@ export default class BoardPresenter {
   };
 
   #renderNoPoints = () => {
-    this.#noPointComponent = new NoPointView(this.#filterType);
+    this.#noPointComponent = new NoEventView(this.#filterType);
     render(this.#noPointComponent, this.#tripContainer, RenderPosition.AFTERBEGIN);
   };
 

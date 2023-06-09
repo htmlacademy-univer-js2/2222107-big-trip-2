@@ -1,24 +1,24 @@
 import { render } from '../framework/render.js';
-import NewPointButtonView from '../view/new-point-button-view.js';
+import AddNewPointButtonView from '../view/add-new-point-button-view.js';
 
-export default class NewPointButtonPresenter {
+export default class AddNewPointButtonPresenter {
   #newPointButtonContainer = null;
   #destinationsModel = null;
   #pointsModel = null;
   #offersModel = null;
-  #boardPresenter = null;
+  #headerPresenter = null;
   #newPointButtonComponent = null;
 
-  constructor({newPointButtonContainer, destinationsModel, pointsModel, offersModel, boardPresenter}) {
+  constructor({newPointButtonContainer, destinationsModel, pointsModel, offersModel, headerPresenter}) {
     this.#newPointButtonContainer = newPointButtonContainer;
     this.#destinationsModel = destinationsModel;
     this.#pointsModel = pointsModel;
     this.#offersModel = offersModel;
-    this.#boardPresenter = boardPresenter;
+    this.#headerPresenter = headerPresenter;
   }
 
   init() {
-    this.#newPointButtonComponent = new NewPointButtonView();
+    this.#newPointButtonComponent = new AddNewPointButtonView();
   }
 
   renderNewPointButton = () => {
@@ -36,7 +36,7 @@ export default class NewPointButtonPresenter {
   };
 
   #handleNewPointButtonClick = () => {
-    this.#boardPresenter.createPoint(this.#handleNewPointFormClose);
+    this.#headerPresenter.createPoint(this.#handleNewPointFormClose);
     this.#newPointButtonComponent.element.disabled = true;
   };
 }
